@@ -61,15 +61,15 @@
    <input type="text" class="formu" name="nacimiento_emp" placeholder="" size="50"></p>
    <p>Direccion:<br> 
     <input type="text" class="formu" name="direccion_emp" placeholder="" size="50"></p>
+    <p>Telefono:<br>
+    <input type="text" class="formu" name="telefono_emp" placeholder="" size="50"></p>
    <p>Correo electronico:<br> 
     <input type="text" class="formu" name="correo_emp" placeholder="" size="50"></p>
     <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Contraseña:</label>
-    <input type="password" class="formu" id="exampleInputPassword1">
+    <input type="password" class="formu" name="contra_emp" id="exampleInputPassword1">
     <div id="emailHelp" class="form-text">No comparta su contraseña con nadie</div>
   </div>
-   <p>Telefono:<br>
-    <input type="text" class="formu" name="telefono_emp" placeholder="" size="50"></p>
     <p>Cargo:<br> 
     <select name="cargo_emp" class="formu">
     <option value="Secador">Secador</option>
@@ -151,3 +151,33 @@
   <!-- Copyright -->
 </footer>
 </html>
+
+
+<?php
+ require "conexion.php";
+ insertar($conexion);
+ function insertar ($conexion) {
+
+    $nombre_emp = $_POST['nombre_emp'];
+    $apellido_emp = $_POST['apellido_emp'];
+    $edad_emp = $_POST['edad_emp'];
+    $sexo_emp = $_POST['sexo_emp'];
+    $cedula_emp = $_POST['cedula_emp'];
+    $nacimiento_emp = $_POST['nacimiento_emp'];
+    $direccion_emp = $_POST['direccion_emp'];
+    $telefono_emp = $_POST['telefono_emp'];
+    $correo_emp = $_POST['correo_emp'];
+    $contra_emp = $_POST['contra_emp'];
+    $cargo_emp = $_POST['cargo_emp'];
+
+    $consulta = "INSERT INTO empleado (nombre_emp, apellido_emp, edad_emp, sexo_emp, cedula_emp, nacimiento_emp, direccion_emp, 
+    telefono_emp, correo_emp, contra_emp, cargo_emp) VALUES ('$nombre_emp','$apellido_emp','$edad_emp','$sexo_emp','$cedula_emp',
+    '$nacimiento_emp','$direccion_emp','$telefono_emp','$correo_emp','$contra_emp','$cargo_emp')";
+    
+    mysqli_query($conexion, $consulta);
+    mysqli_close($conexion);
+
+
+ }
+
+?>
