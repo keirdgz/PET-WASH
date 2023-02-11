@@ -53,17 +53,17 @@
    <input type="text" class="formu" name="apellido_cl" placeholder="" size="50"></p>
    <p>Cedula: <br>
     <input type="text" class="formu" name="cedula_cl" placeholder="" size="50"></p>
-   <p>Direccion:<br> 
-    <input type="text" class="formu" name="direccion_cl" placeholder="" size="50"></p>
+    <p>Telefono:<br>
+    <input type="text" class="formu" name="telefono_cl" placeholder="" size="50"></p> 
    <p>Correo electronico:<br> 
     <input type="text" class="formu" name="correo_cl" placeholder="" size="50"></p>
     <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Contraseña:</label>
-    <input type="password" class="formu" id="exampleInputPassword1">
+    <input type="password" class="formu" name="contra_cl" id="exampleInputPassword1">
     <div id="emailHelp" class="form-text">No comparta su contraseña con nadie</div>
   </div>
-   <p>Telefono:<br>
-    <input type="text" class="formu" name="telefono_cl" placeholder="" size="50"></p>
+  <p>Direccion:<br> 
+    <input type="text" class="formu" name="direccion_cl" placeholder="" size="50"></p>
     <br> 
     <input type="submit" class="botons" value="Registrar">
    
@@ -137,3 +137,28 @@
   <!-- Copyright -->
 </footer>
 </html>
+
+
+<?php
+ require_once "conexion.php";
+ insertar($conexion);
+ function insertar ($conexion) {
+  
+    $nombre_cl = $_POST['nombre_cl'];
+    $apellido_cl = $_POST['apellido_cl'];
+    $cedula_cl = $_POST['cedula_cl'];
+    $telefono_cl = $_POST['telefono_cl'];
+    $correo_cl = $_POST['correo_cl'];
+    $contra_cl = $_POST['contra_cl'];
+    $direccion_cl = $_POST['direccion_cl'];
+
+    $consulta = "INSERT INTO cliente (nombre_cl, apellido_cl, cedula_cl, telefono_cl, correo_cl, contra_cl, direccion_cl) 
+    VALUES ('$nombre_cl','$apellido_cl','$cedula_cl','$telefono_cl','$correo_cl','$contra_cl','$direccion_cl')";
+    
+    mysqli_query($conexion, $consulta);
+    mysqli_close($conexion);
+
+ 
+ }
+
+?>
