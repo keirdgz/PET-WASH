@@ -78,7 +78,6 @@
     <option value="Masajista">Masajista</option>
     <option value="Pedicurista">Pedicurista</option></select>
    </p>
-   <br> 
     <input type="submit" class="botons" value="Registrar">
    
 </form> 
@@ -154,7 +153,7 @@
 
 
 <?php
- require "conexion.php";
+ require_once "conexion.php";
  insertar($conexion);
  function insertar ($conexion) {
 
@@ -170,13 +169,11 @@
     $contra_emp = $_POST['contra_emp'];
     $cargo_emp = $_POST['cargo_emp'];
 
-    $consulta = "INSERT INTO empleado (nombre_emp, apellido_emp, edad_emp, sexo_emp, cedula_emp, nacimiento_emp, direccion_emp, 
-    telefono_emp, correo_emp, contra_emp, cargo_emp) VALUES ('$nombre_emp','$apellido_emp','$edad_emp','$sexo_emp','$cedula_emp',
-    '$nacimiento_emp','$direccion_emp','$telefono_emp','$correo_emp','$contra_emp','$cargo_emp')";
+    $consulta = "INSERT INTO empleado (nombre_emp, apellido_emp, edad_emp, sexo_emp, cedula_emp, nacimiento_emp, direccion_emp, telefono_emp, correo_emp, contra_emp, cargo_emp) 
+  VALUES ('$nombre_emp','$apellido_emp','$edad_emp','$sexo_emp','$cedula_emp','$nacimiento_emp','$direccion_emp','$telefono_emp','$correo_emp','$contra_emp','$cargo_emp')";
     
     mysqli_query($conexion, $consulta);
     mysqli_close($conexion);
-
 
  }
 
